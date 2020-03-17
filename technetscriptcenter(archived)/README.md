@@ -2,7 +2,7 @@
 
 ---------------------------------------
 Search and Install updates for Server Core by PowerShell (for RS3 or later)<br />
-<a href="https://github.com/yamauchikazu/public/blob/master/SearchandInstallUpdates.ps1">SearchandInstallUpdates.ps1</a>
+<a href="https://github.com/yamauchikazu/public/blob/master/technetscriptcenter(archived)/SearchandInstallUpdates.ps1">SearchandInstallUpdates.ps1</a>
 ---------------------------------------
 Description
 
@@ -55,7 +55,7 @@ C:\Work>
 
 ---------------------------------------
 PowerShell script for checking HTTP (S) response<br />
-<a href="https://github.com/yamauchikazu/public/blob/master/checkurl.ps1">checkurl.ps1</a>
+<a href="https://github.com/yamauchikazu/public/blob/master/technetscriptcenter(archived)/checkurl.ps1">checkurl.ps1</a>
 ---------------------------------------
 Description
 
@@ -75,8 +75,8 @@ Invoke-WebResuest Error: The remote server returned an error: (404)
 
 ---------------------------------------
 Text-based Event Viewer<br />
-<a href="https://github.com/yamauchikazu/public/blob/master/eventvcui.vbs">eventvcui.vbs</a><br />
-<a href="https://github.com/yamauchikazu/public/blob/master/eventvcui_en.vbs">eventvcui_en.vbs</a>  
+<a href="https://github.com/yamauchikazu/public/blob/master/technetscriptcenter(archived)/eventvcui.vbs">eventvcui.vbs</a><br />
+<a href="https://github.com/yamauchikazu/public/blob/master/technetscriptcenter(archived)/eventvcui_en.vbs">eventvcui_en.vbs</a>  
 ---------------------------------------
 Description
 
@@ -141,7 +141,7 @@ Windows Server 2008 RTM and Windows Vista RTM version are not supported. Because
 
 ---------------------------------------
 Determine which .NET Framework versions are installed by PowerShell<br />
-<a href="https://github.com/yamauchikazu/public/blob/master/get-dotnetver.ps1">get-dotnetver.ps1</a>
+<a href="https://github.com/yamauchikazu/public/blob/master/technetscriptcenter(archived)/get-dotnetver.ps1">get-dotnetver.ps1</a>
 ---------------------------------------
 Description
 
@@ -166,7 +166,7 @@ PS C:\work\> .\get-dotnetver.ps1<br />
 
 ---------------------------------------
 Get version and update channel from local installed Office 365 (for 2016/2019)<br />
-<a href="https://github.com/yamauchikazu/public/blob/master/get-o365ver.ps1">get-o365ver.ps1</a>
+<a href="https://github.com/yamauchikazu/public/blob/master/technetscriptcenter(archived)/get-o365ver.ps1">get-o365ver.ps1</a>
 ---------------------------------------
 Description
 
@@ -182,7 +182,7 @@ PS C:\Work>
 
 ---------------------------------------
 Show Windows Update History by PowerShell<br />
-<a href="https://github.com/yamauchikazu/public/blob/master/get-windowsupdatehistory.ps1">get-windowsupdatehistory.ps1</a>
+<a href="https://github.com/yamauchikazu/public/blob/master/technetscriptcenter(archived)/get-windowsupdatehistory.ps1">get-windowsupdatehistory.ps1</a>
 ---------------------------------------
 Description
 
@@ -200,8 +200,8 @@ PS C:\work> .\Get-WindowsUpdateHistory.ps1<br />
 
 ---------------------------------------
 Get Windows Update Settings from Windows 10 registry<br />
-<a href="https://github.com/yamauchikazu/public/blob/master/get-wusettings.ps1">get-wusettings.ps1</a><br />
-<a href="https://github.com/yamauchikazu/public/blob/master/get-wusettingsj.ps1">get-wusettingsj.ps1</a>
+<a href="https://github.com/yamauchikazu/public/blob/master/technetscriptcenter(archived)/get-wusettings.ps1">get-wusettings.ps1</a><br />
+<a href="https://github.com/yamauchikazu/public/blob/master/technetscriptcenter(archived)/get-wusettingsj.ps1">get-wusettingsj.ps1</a>
 ---------------------------------------
 Description
 
@@ -230,7 +230,7 @@ C:\scripts><br />
 
 ---------------------------------------
 Install and update SysinternalsSuite by PowerShell<br />
-<a href="https://github.com/yamauchikazu/public/blob/master/installsysinternalssuite.ps1">installsysinternalssuite.ps1</a>
+<a href="https://github.com/yamauchikazu/public/blob/master/technetscriptcenter(archived)/installsysinternalssuite.ps1">installsysinternalssuite.ps1</a>
 ---------------------------------------
 Description
 
