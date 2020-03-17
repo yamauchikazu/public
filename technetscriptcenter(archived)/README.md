@@ -1,4 +1,5 @@
-<b>My sample scripts (include archived scripts from technet script center).</b>
+<b>My sample scripts (archived from technet script center).</b>
+Microsoft plans to retire Technet Gallery (including script center) in June 2020.
 
 ---------------------------------------
 Search and Install updates for Server Core by PowerShell (for RS3 or later)<br />
