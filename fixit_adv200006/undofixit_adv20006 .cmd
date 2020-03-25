@@ -32,7 +32,7 @@ IF not errorlevel 1 GOTO WINDOWS_10
 
 ECHO [3/3+] Undo Optional procedure for Windows 8.1 operating systems and below (disable ATMFD)
 REG DELETE "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Windows" /v DisableATMFD /f
-REG QUERY "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Windows" /v DisableATMFD /f
+REG QUERY "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Windows" /v DisableATMFD
 GOTO WINDOWS_REBOOT
 
 :WINDOWS_10_1709ORNEWER
