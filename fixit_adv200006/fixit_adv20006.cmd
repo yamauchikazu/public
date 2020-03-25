@@ -40,6 +40,8 @@ IF not errorlevel 1 GOTO WINDOWS_10
 
 ECHO [3/3+] Optional procedure for Windows 8.1 operating systems and below (disable ATMFD)
 REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows" /v DisableATMFD /t REG_DWORD /d 1 /f
+TIMEOUT /T 15 /NOBREAK > nul
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows" /v DisableATMFD /t REG_DWORD /d 1 /f
 REG QUERY "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows" /v DisableATMFD
 GOTO WINDOWS_REBOOT
 
