@@ -30,14 +30,13 @@ icacls.exe . /restore atmfd.dll.acl
 WMIC OS GET VERSION | find "10." > nul
 IF not errorlevel 1 GOTO WINDOWS_10
 
-:WINDOWS_10_1709ORNEWER
-:WINDOWS_10
-GOTO WINDOWS_REBOOT
-
 ECHO [3/3+] Undo Optional procedure for Windows 8.1 operating systems and below (disable ATMFD)
 REG DELETE "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Windows" /v DisableATMFD /f
 REG QUERY "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Windows" /v DisableATMFD /f
+GOTO WINDOWS_REBOOT
 
+:WINDOWS_10_1709ORNEWER
+:WINDOWS_10
 :WINDOWS_REBOOT
 TIMEOUT 30
 ECHO Restart computer in 30 sec. Type CTRL＋C to cancel.
