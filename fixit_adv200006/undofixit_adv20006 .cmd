@@ -1,6 +1,6 @@
 @ECHO OFF
 REM https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/adv200006
-ECHO Undo fixit for ADV200006. Type CTRLÔºãC to cancel.
+ECHO Undo fixit for ADV200006. Type CTRLÅ{C to cancel.
 PAUSE
 
 ECHO [1/3] Undo "Disable the Preview Pane and Details Pane in Windows Explorer"
@@ -15,24 +15,25 @@ ECHO [3/3] Undo Rename ATMFD.DLL
 
 IF EXIST %windir%\system32\atmfd.dll goto SKIPRENAME
 IF not EXIST %windir%\system32\x-atmfd.dll goto WINDOWS_10_1709ORNEWER
-cd "%windir%\system32"
+pushd "%windir%\system32"
 rename x-atmfd.dll atmfd.dll
 icacls.exe atmfd.dll /setowner "NT SERVICE\TrustedInstaller"
 icacls.exe . /restore atmfd.dll.acl
+popd
 
 IF not EXIST %windir%\syswow64\x-atmfd.dll goto SKIPRENAME
-cd "%windir%\syswow64"
+pushd "%windir%\syswow64"
 rename x-atmfd.dll atmfd.dll
 icacls.exe atmfd.dll /setowner "NT SERVICE\TrustedInstaller"
 icacls.exe . /restore atmfd.dll.acl
+popd
 
 :SKIPRENAME
 WMIC OS GET VERSION | find "10." > nul
 IF not errorlevel 1 GOTO WINDOWS_10
 
 ECHO [3/3+] Undo Optional procedure for Windows 8.1 operating systems and below (disable ATMFD)
-REG DELETE "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Windows" /v DisableATMFD /f
-TIMEOUT /T 15 /NOBREAK > nul
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows" /v DisableATMFD /t REG_DWORD /d 0 /f
 REG DELETE "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Windows" /v DisableATMFD /f
 REG QUERY "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Windows" /v DisableATMFD
 GOTO WINDOWS_REBOOT
@@ -40,8 +41,10 @@ GOTO WINDOWS_REBOOT
 :WINDOWS_10_1709ORNEWER
 :WINDOWS_10
 :WINDOWS_REBOOT
+REM ECHO You need to restart computer!
+REM PAUSE
+ECHO Restart computer in 30 sec. Type CTRLÅ{C to cancel.
 TIMEOUT 30
-ECHO Restart computer in 30 sec. Type CTRLÔºãC to cancel.
 SHUTDOWN /R /T 0
 GOTO END
 
