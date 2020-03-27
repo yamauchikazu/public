@@ -1,6 +1,6 @@
 @ECHO OFF
 REM https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/adv200006
-ECHO Undo fixit for ADV200006. Type CTRLÅ{C to cancel.
+ECHO Undo fixit for ADV200006. Type CTRL¬Å{C to cancel.
 PAUSE
 
 ECHO [1/3] Undo "Disable the Preview Pane and Details Pane in Windows Explorer"
@@ -29,10 +29,11 @@ icacls.exe . /restore atmfd.dll.acl
 popd
 
 :SKIPRENAME
-WMIC OS GET VERSION | find "10." > nul
-IF not errorlevel 1 GOTO WINDOWS_10
+REM WMIC OS GET VERSION | find "10." > nul
+REM IF not errorlevel 1 GOTO WINDOWS_10
 
-ECHO [3/3+] Undo Optional procedure for Windows 8.1 operating systems and below (disable ATMFD)
+REM ECHO [3/3+] Undo Optional procedure for Windows 8.1 operating systems and below (disable ATMFD)
+ECHO [3/3+] Undo Optional procedure for Windows 7 to 10 ver 1703 (disable ATMFD)
 REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows" /v DisableATMFD /t REG_DWORD /d 0 /f
 REG DELETE "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Windows" /v DisableATMFD /f
 REG QUERY "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Windows" /v DisableATMFD
@@ -43,7 +44,7 @@ GOTO WINDOWS_REBOOT
 :WINDOWS_REBOOT
 REM ECHO You need to restart computer!
 REM PAUSE
-ECHO Restart computer in 30 sec. Type CTRLÅ{C to cancel.
+ECHO Restart computer in 30 sec. Type CTRL¬Å{C to cancel.
 TIMEOUT 30
 SHUTDOWN /R /T 0
 GOTO END
