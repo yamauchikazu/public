@@ -29,11 +29,11 @@ icacls.exe . /restore atmfd.dll.acl
 popd
 
 :SKIPRENAME
-REM WMIC OS GET VERSION | find "10." > nul
-REM IF not errorlevel 1 GOTO WINDOWS_10
+WMIC OS GET VERSION | find "10." > nul
+IF not errorlevel 1 GOTO WINDOWS_10
 
 REM ECHO [3/3+] Undo Optional procedure for Windows 8.1 operating systems and below (disable ATMFD)
-ECHO [3/3+] Undo Optional procedure for Windows 7 to 10 ver 1703 (disable ATMFD)
+ECHO [3/3+] Undo Optional procedure for Windows 7 to 8.1 and Server 2008 to 2012 R2 (disable ATMFD)
 REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows" /v DisableATMFD /t REG_DWORD /d 0 /f
 REG DELETE "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Windows" /v DisableATMFD /f
 REG QUERY "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Windows" /v DisableATMFD
