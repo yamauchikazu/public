@@ -8,3 +8,7 @@ https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/adv200006
 
 ADV200001 | Microsoft Guidance on Scripting Engine Memory Corruption Vulnerability（Security Advisory）
 https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV200001
+
+Reference
+緊急、Windowsの未パッチの脆弱性（ADV200006）回避策をバッチ化する（@IT）
+https://www.atmarkit.co.jp/ait/articles/2003/30/news028.html
