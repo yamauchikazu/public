@@ -1,4 +1,4 @@
-$TargetUserName = "WIN2016SV01\localuser"
+$TargetUserName = "COMPUTERNAME\USERNAME"
 while(1) {
   Write-Host -NoNewLine (Get-Date -Format T)
   Write-Host " *********************************"
