@@ -1,11 +1,16 @@
 $TargetUserName = "COMPUTERNAME\USERNAME"
+$TargetUserName = ($TargetUserName).ToUpper()
 while(1) {
   Write-Host -NoNewLine (Get-Date -Format T)
   Write-Host " *********************************"
   $userprocs = (Get-Process -IncludeUserName -ErrorAction SilentlyContinue)
   $numofprocs = 0
   foreach ($userproc in $userprocs){
-    if ($userproc.UserName -eq $TargetUserName) {
+    $CurrentUserName = $userproc.UserName
+    if ($CurrentUserName.Length -gt 0){
+      $CurrentUserName = ($CurrentUserName).ToUpper()
+    }
+    if ($CurrentUserName -eq $TargetUserName) {
        $numofprocs++
        Write-Host -NoNewLine $userproc.UserName
        Write-Host -NoNewLine ", "
