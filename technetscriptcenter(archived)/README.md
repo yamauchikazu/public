@@ -6,6 +6,8 @@ Microsoft plans to retire Technet Gallery (including script center) in June 2020
 Search and Install updates for Server Core by PowerShell (for RS3 or later)<br />
 <a href="https://github.com/yamauchikazu/public/blob/master/technetscriptcenter(archived)/SearchandInstallUpdates.ps1">SearchandInstallUpdates.ps1</a>
 ---------------------------------------
+<b><font color = "red"> Note: The WindowsUpdateProvider module is no longer included in Windows 10/Server ver 2004 (20H1) that clean insalled. If you upgrade from a previous version, the module may remain, but it will no longer work. (Updated 2020/05/15)</font></b>
+
 Description
 
 This PowerShell script (SearchAndInstallUpdates.ps1) for installing updates using the WindowsUpdateProvider module cmdlets from Windows 10 ver 1709 (RS3) or later. Especially it is assumed to be used in Windows Server 2019Server Core or Windows Server Semi-Annual Channel. (Only tested on Windows Server 2019 Server Core.)
