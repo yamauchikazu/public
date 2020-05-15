@@ -6,7 +6,7 @@ Microsoft plans to retire Technet Gallery (including script center) in June 2020
 Search and Install updates for Server Core by PowerShell (for RS3 or later)<br />
 <a href="https://github.com/yamauchikazu/public/blob/master/technetscriptcenter(archived)/SearchandInstallUpdates.ps1">SearchandInstallUpdates.ps1</a>
 ---------------------------------------
-<b><font color = "red"> Note: The WindowsUpdateProvider module is no longer included in Windows 10/Server ver 2004 (20H1) that clean insalled. If you upgrade from a previous version, the module may remain, but it will no longer work. (Updated 2020/05/15)</font></b>
+<b>Note: The WindowsUpdateProvider module is no longer included in Windows 10/Server ver 2004 (20H1) that clean insalled. If you upgrade from a previous version, the module may remain, but it will no longer work. (Updated 2020/05/15)</b>
 
 Description
 
