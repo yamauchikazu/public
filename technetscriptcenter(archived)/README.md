@@ -2,7 +2,7 @@
 <br />
 Microsoft plans to retire Technet Gallery (including script center) in June 2020.
 
-Important: The following features have been deprecated from Windows 10 May 2020 Update (ver 2004).<br />
+Important: The following features have been deprecated from Windows 10 May 2020 Update (ver 2004). Scripts that rely on these features may have problems.<br />
 ･ cmdlets include WindowsUpdateProvider module<br />
 ･ root/Microsoft/Windows/WindowsUpdate WMI namespace,<br />
 ･ defer update option in Settings app.<br />
