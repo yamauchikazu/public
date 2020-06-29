@@ -220,6 +220,7 @@ This powershell script collects Windows Update related settings for Windows 10 v
 - Windows Server Update Services (WSUS) client configuration
 - Windows Update for Business (WUfB) local configuration by Settings app
 - Possibility of mnaged device by Microsofft Endpoint Configuration Manager (formerly System Center configuration Manager)
+- Add support for Targeted Releae Version (Windows 10 ver 1803 or later) and bug fix (updated 2020/06/29） 
 
 .\get-wusettings.ps1<br />
 (get-wusettingsj.ps1 for Japanese environment.)
