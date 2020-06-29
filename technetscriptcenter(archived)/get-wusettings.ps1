@@ -23,6 +23,10 @@ $WUfBSettingFU = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Wind
 $WUfBSettingQU = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -ErrorAction SilentlyContinue).DeferQualityUpdates
 $WUfBSettingFUdays = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -ErrorAction SilentlyContinue).DeferFeatureUpdatesPeriodInDays
 $WUfBSettingQUdays = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -ErrorAction SilentlyContinue).DeferQualityUpdatesPeriodInDays
+
+$WUfBSettingTargetReleaseVersion = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -ErrorAction SilentlyContinue).TargetReleaseVersion
+$WUfBSettingTargetReleaseVersionInfo = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -ErrorAction SilentlyContinue).TargetReleaseVersionInfo
+
 $ConfigMgrClient = ""
 $ConfigMgrClient = (Get-WmiObject -Query "Select * from __Namespace WHERE Name='CCM'" -Namespace root -ErrorAction SilentlyContinue)
 
@@ -103,40 +107,51 @@ if ((($WUfBSettingFULocal -eq "0") -and ($WUfBSettingQULocal -eq "0") -and ($WUf
 } else {
 	Write-Host "Windows Update for Business (Settings app): Enabled"
 	if ($WUfBSettingBranchLocal -eq "16") {
-		Write-Host "  Update Channel: SAC" 
+		Write-Host "  Update Channel: Semi-Annual Channel (SAC)" 
         } elseif ($WUfBSettingBranchLocal -eq "32") {
 		Write-Host "  Update Channel: SAC-T (for 1809 and below only)" 
 	} else {
 		Write-Host "  Update Channel: Preview Build" 
 	}
-	Write-Host "  After a feature update is released, defer receiving it for this days:" $WUfBSettingFULocal
-	Write-Host "  After a quality update is released, defer receiving it for this days:" $WUfBSettingQULocal
+	Write-Host "  After a feature update is released, defer receiving it for this days (ver 1909 or before):" $WUfBSettingFULocal
+	Write-Host "  After a quality update is released, defer receiving it for this days (ver 1909 or before):" $WUfBSettingQULocal
 	Write-Host "  ("$EffectiveWUfBLocal"These settings are in Settings > Update & Security > Windows Update > Advanced Options > Chose when updates are installed. (Hidden in WSUS client))"
 }
 Write-Host ""
 # Check WUfB Settings Policies
-if (($WUfBSettingFU -eq "1") -or ($WUfBSettingQU -eq "1")) {
+if (($WUfBSettingFU -eq "1") -or ($WUfBSettingQU -eq "1") -or ($WUfBSettingTargetReleaseVersion -eq "1")) {
 	Write-Host "Windows Update for Business (Policies): Enabled"
-        if ($WUfBSettingBranch.Lengsh -eq 0) {
+        if ($WUfBSettingBranch.Length -eq 0) {
 		Write-Host "  Update Channel: Not Confiured"
-		Write-Host "  After a feature update is released, defer receiving it for this days: Not Configured"
         } else {
-		if ($WUfBSettingBranch -eq "32") {
+		if ($WUfBSettingBranch -eq "16") {
+			Write-Host "  Update Channel: Semi-Annual Channel (SAC)" 
+		} elseif ($WUfBSettingBranch -eq "32") {
 			Write-Host "  Update Channel: SAC-T (for 1809 and below only)" 
 		} else {
-			Write-Host "  Update Channel: Preview Build" 
+			Write-Host "  Update Channel: Preview Build"
 		}
-		Write-Host "  After a feature update is released, defer receiving it for this days:" $WUfBSettingFUdays
+        }
+        if ($WUfBSettingFU.Length -eq 0){
+	        Write-Host "  After a feature update is released, defer receiving it for this days: Not Confugired"
+        } else { 
+	        Write-Host "  After a feature update is released, defer receiving it for this days:" $WUfBSettingFUdays
         }
 	if ($WUfBSettingQU.Length -eq 0){
 		Write-Host "  After a quality update is released, defer receiving it for this days: Not Configured"
 	} else {
 		Write-Host "  After a quality update is released, defer receiving it for this days:" $WUfBSettingQUdays
 	}
+	if ($WUfBSettingTargetReleaseVersionInfo.Length -eq 0){
+		Write-Host "  Targeted feature update version (ver 1803 or later): Not Configured" $WUfBSettingTargetReleaseVersionInfo
+	} else {
+		Write-Host "  Targeted feature update version (ver 1803 or later): " $WUfBSettingTargetReleaseVersionInfo
+        }
 	Write-Host "  ("$EffectiveWUfBPolicy"These settings are in Computer Configuration\Adminisrative Template\Windows Component\Windows Update\Windows Update for Business.)"
 } else {
 	Write-Host "Windows Update for Business (Policies): Not Configured"
 }
+
 Write-Host ""
 # Check ConfigMgr Client
 if (($ConfigMgrClient.Length -ne 0) -and (Test-Path "C:\Windows\CCMSETUP")) {
