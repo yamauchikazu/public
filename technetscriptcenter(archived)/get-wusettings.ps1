@@ -143,7 +143,7 @@ if (($WUfBSettingFU -eq "1") -or ($WUfBSettingQU -eq "1") -or ($WUfBSettingTarge
 		Write-Host "  After a quality update is released, defer receiving it for this days:" $WUfBSettingQUdays
 	}
 	if ($WUfBSettingTargetReleaseVersionInfo.Length -eq 0){
-		Write-Host "  Targeted feature update version (ver 1803 or later): Not Configured" $WUfBSettingTargetReleaseVersionInfo
+		Write-Host "  Targeted feature update version (ver 1803 or later): Not Configured"
 	} else {
 		Write-Host "  Targeted feature update version (ver 1803 or later): " $WUfBSettingTargetReleaseVersionInfo
         }
