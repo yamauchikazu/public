@@ -23,6 +23,10 @@ $WUfBSettingFU = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Wind
 $WUfBSettingQU = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -ErrorAction SilentlyContinue).DeferQualityUpdates
 $WUfBSettingFUdays = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -ErrorAction SilentlyContinue).DeferFeatureUpdatesPeriodInDays
 $WUfBSettingQUdays = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -ErrorAction SilentlyContinue).DeferQualityUpdatesPeriodInDays
+
+$WUfBSettingTargetReleaseVersion = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -ErrorAction SilentlyContinue).TargetReleaseVersion
+$WUfBSettingTargetReleaseVersionInfo = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -ErrorAction SilentlyContinue).TargetReleaseVersionInfo
+
 $ConfigMgrClient = ""
 $ConfigMgrClient = (Get-WmiObject -Query "Select * from __Namespace WHERE Name='CCM'" -Namespace root -ErrorAction SilentlyContinue)
 
@@ -42,25 +46,25 @@ if (($WUfBSettingFU -eq "1") -or ($WUfBSettingQU -eq "1")) {
 	$EffectiveWUfBPolicy = "disabled"
 }
 if (($EffectiveWSUS -eq "enabled") -and ($EffectiveWUfBLocal -eq "enabled") -and ($EffectiveWUfBPolicy -eq "enabled")) {
-	$EffectiveWSUS = "* WSUS ‚Æ WUfB ‚Ìİ’è‚ª¬İ‚µ‚Ä‚¢‚Ü‚·B‚±‚Ìİ’è‚Í„§‚³‚ê‚Ü‚¹‚ñB"
-	$EffectiveWUfBLocal = "* ‚±‚Ìİ’è‚Í–³‹‚³‚ê‚Ü‚·B"
-	$EffectiveWUfBPolicy = "* WSUS ‚Æ WUfB ‚Ìİ’è‚ª¬İ‚µ‚Ä‚¢‚Ü‚·B‚±‚Ìİ’è‚Í„§‚³‚ê‚Ü‚¹‚ñB"
+	$EffectiveWSUS = "* WSUS ã¨ WUfB ã®è¨­å®šãŒæ··åœ¨ã—ã¦ã„ã¾ã™ã€‚ã“ã®è¨­å®šã¯æ¨å¥¨ã•ã‚Œã¾ã›ã‚“ã€‚"
+	$EffectiveWUfBLocal = "* ã“ã®è¨­å®šã¯ç„¡è¦–ã•ã‚Œã¾ã™ã€‚"
+	$EffectiveWUfBPolicy = "* WSUS ã¨ WUfB ã®è¨­å®šãŒæ··åœ¨ã—ã¦ã„ã¾ã™ã€‚ã“ã®è¨­å®šã¯æ¨å¥¨ã•ã‚Œã¾ã›ã‚“ã€‚"
 } elseif (($EffectiveWSUS -eq "enabled") -and ($EffectiveWUfBLocal -eq "enabled")) {
-	$EffectiveWSUS = "(* WSUS ‚Æ WUfB ‚Ìİ’è‚ª¬İ‚µ‚Ä‚¢‚Ü‚·B‚±‚Ìİ’è‚Í„§‚³‚ê‚Ü‚¹‚ñB"
-	$EffectiveWUfBLocal = "* WSUS ‚Æ WUfB ‚Ìİ’è‚ª¬İ‚µ‚Ä‚¢‚Ü‚·B‚±‚Ìİ’è‚Í„§‚³‚ê‚Ü‚¹‚ñB"
+	$EffectiveWSUS = "(* WSUS ã¨ WUfB ã®è¨­å®šãŒæ··åœ¨ã—ã¦ã„ã¾ã™ã€‚ã“ã®è¨­å®šã¯æ¨å¥¨ã•ã‚Œã¾ã›ã‚“ã€‚"
+	$EffectiveWUfBLocal = "* WSUS ã¨ WUfB ã®è¨­å®šãŒæ··åœ¨ã—ã¦ã„ã¾ã™ã€‚ã“ã®è¨­å®šã¯æ¨å¥¨ã•ã‚Œã¾ã›ã‚“ã€‚"
 	$EffectiveWUfBPolicy = ""
 } elseif (($EffectiveWSUS -eq "enabled") -and ($EffectiveWUfBPolicy -eq "disabled")) {
-	$EffectiveWSUS = "* ‚±‚Ìİ’è‚ª—Dæ‚³‚ê‚Ü‚·B"
+	$EffectiveWSUS = "* ã“ã®è¨­å®šãŒå„ªå…ˆã•ã‚Œã¾ã™ã€‚"
 	$EffectiveWUfBLocal = ""
 	$EffectiveWUfBPolicy = ""
 } elseif (($EffectiveWSUS -eq "enabled") -and ($EffectiveWUfBPolicy -eq "enabled")) {
-	$EffectiveWSUS = "* WSUS ‚Æ WUfB ‚Ìİ’è‚ª¬İ‚µ‚Ä‚¢‚Ü‚·B‚±‚Ìİ’è‚Í„§‚³‚ê‚Ü‚¹‚ñB"
+	$EffectiveWSUS = "* WSUS ã¨ WUfB ã®è¨­å®šãŒæ··åœ¨ã—ã¦ã„ã¾ã™ã€‚ã“ã®è¨­å®šã¯æ¨å¥¨ã•ã‚Œã¾ã›ã‚“ã€‚"
 	$EffectiveWUfBLocal = ""
-	$EffectiveWUfBPolicy = "* WSUS ‚Æ WUfB ‚Ìİ’è‚ª¬İ‚µ‚Ä‚¢‚Ü‚·B‚±‚Ìİ’è‚Í„§‚³‚ê‚Ü‚¹‚ñB"
+	$EffectiveWUfBPolicy = "* WSUS ã¨ WUfB ã®è¨­å®šãŒæ··åœ¨ã—ã¦ã„ã¾ã™ã€‚ã“ã®è¨­å®šã¯æ¨å¥¨ã•ã‚Œã¾ã›ã‚“ã€‚"
 } elseif (($EffectiveWUfBLocal -eq "enabled") -and ($EffectiveWUfBPolicy -eq "enabled")) {
 	$EffectiveWSUS = ""
-	$EffectiveWUfBLocal = "* ‚±‚Ìİ’è‚Í–³‹‚³‚ê‚Ü‚·B"
-	$EffectiveWUfBPolicy = "* ‚±‚Ìİ’è‚ª—Dæ‚³‚ê‚Ü‚·B"
+	$EffectiveWUfBLocal = "* ã“ã®è¨­å®šã¯ç„¡è¦–ã•ã‚Œã¾ã™ã€‚"
+	$EffectiveWUfBPolicy = "* ã“ã®è¨­å®šãŒå„ªå…ˆã•ã‚Œã¾ã™ã€‚"
 } else {
 	$EffectiveWSUS = ""
 	$EffectiveWUfBLocal = ""
@@ -69,88 +73,97 @@ if (($EffectiveWSUS -eq "enabled") -and ($EffectiveWUfBLocal -eq "enabled") -and
 
 # Check WU Settings
 if ($WUSettingsNoAutoUpdate.Length -eq 0) {
-	Write-Host "Windows Update (ƒ|ƒŠƒV[): –¢\¬ (Windows 10 ‚ÌŠù’è‚Í©“®)"
+	Write-Host "Windows Update (ãƒãƒªã‚·ãƒ¼): æœªæ§‹æˆ (Windows 10 ã®æ—¢å®šã¯è‡ªå‹•)"
 } else {
   	if ($WUSettingsNoAutoUpdate -eq "1") {
-		Write-Host "Windows Update (ƒ|ƒŠƒV[): è“® (–³Œø)"
+		Write-Host "Windows Update (ãƒãƒªã‚·ãƒ¼): æ‰‹å‹• (ç„¡åŠ¹)"
 	} elseif ($WUSettingsAuOptions -eq "3") {
-		Write-Host "Windows Update (ƒ|ƒŠƒV[): ƒ_ƒEƒ“ƒ[ƒh‚Ì‚İ"
+		Write-Host "Windows Update (ãƒãƒªã‚·ãƒ¼): ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã®ã¿"
 	} elseif ($WUSettingsAuOptions -eq "4") {
-		Write-Host "Windows Update (ƒ|ƒŠƒV[): ©“®"
+		Write-Host "Windows Update (ãƒãƒªã‚·ãƒ¼): è‡ªå‹•"
 	} else {
-		Write-Host "Windows Update (ƒ|ƒŠƒV[): ƒJƒXƒ^ƒ€"
+		Write-Host "Windows Update (ãƒãƒªã‚·ãƒ¼): ã‚«ã‚¹ã‚¿ãƒ "
 	}
-	Write-Host "  (İ’èêŠFƒRƒ“ƒsƒ…[ƒ^[‚Ì\¬\ŠÇ——pƒeƒ“ƒvƒŒ[ƒg\Windows ƒRƒ“ƒ|[ƒlƒ“ƒg\Windows Update\©“®XV‚ğ\¬‚·‚é)"
+	Write-Host "  (è¨­å®šå ´æ‰€ï¼šã‚³ãƒ³ãƒ”ãƒ¥ãƒ¼ã‚¿ãƒ¼ã®æ§‹æˆ\ç®¡ç†ç”¨ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ\Windows ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ\Windows Update\è‡ªå‹•æ›´æ–°ã‚’æ§‹æˆã™ã‚‹)"
 
 }
 Write-Host ""
 # Check WSUS Settings
 if ($WSUSSetting.Length -eq 0) {
-	Write-Host "WSUS ƒNƒ‰ƒCƒAƒ“ƒg: –¢\¬"
+	Write-Host "WSUS ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆ: æœªæ§‹æˆ"
 } else {
 	if ($WSUSSetting -eq "0") {
-		Write-Host "WSUS ƒNƒ‰ƒCƒAƒ“ƒg: –³Œø"
+		Write-Host "WSUS ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆ: ç„¡åŠ¹"
 	} else {
-		Write-Host "WSUS ƒNƒ‰ƒCƒAƒ“ƒg: —LŒø"
-		Write-Host "  WSUS ƒT[ƒo[:" $WSUSSettingWUServer
+		Write-Host "WSUS ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆ: æœ‰åŠ¹"
+		Write-Host "  WSUS ã‚µãƒ¼ãƒãƒ¼:" $WSUSSettingWUServer
 	}
-	Write-Host "  ("$EffectiveWSUS"İ’èêŠFƒRƒ“ƒsƒ…[ƒ^[‚Ì\¬\ŠÇ——pƒeƒ“ƒvƒŒ[ƒg\Windows ƒRƒ“ƒ|[ƒlƒ“ƒg\Windows Update\ƒCƒ“ƒgƒ‰ƒlƒbƒg‚Ì Microsoft XVƒT[ƒrƒX‚ÌêŠ‚ğw’è‚·‚é)"
+	Write-Host "  ("$EffectiveWSUS"è¨­å®šå ´æ‰€ï¼šã‚³ãƒ³ãƒ”ãƒ¥ãƒ¼ã‚¿ãƒ¼ã®æ§‹æˆ\ç®¡ç†ç”¨ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ\Windows ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ\Windows Update\ã‚¤ãƒ³ãƒˆãƒ©ãƒãƒƒãƒˆã® Microsoft æ›´æ–°ã‚µãƒ¼ãƒ“ã‚¹ã®å ´æ‰€ã‚’æŒ‡å®šã™ã‚‹)"
 }
 Write-Host ""
 # Check Local WUfB Settings
 if ((($WUfBSettingFULocal -eq "0") -and ($WUfBSettingQULocal -eq "0") -and ($WUfBSettingBranchLocal -eq "16")) -or (($WUfBSettingFULocal.Length -eq 0) -and ($WUfBSettingQULocal.Length -eq 0)) -or ($WUfBSettingBranchLocal.Length -eq 0)) {
-	Write-Host "Windows Update for Business (İ’èƒAƒvƒŠ): –¢\¬"
+	Write-Host "Windows Update for Business (è¨­å®šã‚¢ãƒ—ãƒª): æœªæ§‹æˆ"
 } else {
-	Write-Host "Windows Update for Business (İ’èƒAƒvƒŠ): —LŒø"
+	Write-Host "Windows Update for Business (è¨­å®šã‚¢ãƒ—ãƒª): æœ‰åŠ¹"
 	if ($WUfBSettingBranchLocal -eq "16") {
-		Write-Host "  XVƒ`ƒƒƒlƒ‹iWindows €”õƒŒƒxƒ‹j: SAC" 
+		Write-Host "  æ›´æ–°ãƒãƒ£ãƒãƒ«ï¼ˆWindows æº–å‚™ãƒ¬ãƒ™ãƒ«ï¼‰: åŠæœŸãƒãƒ£ãƒãƒ« (SAC)" 
 	} elseif ($WUfBSettingBranchLocal -eq "32") {
-		Write-Host "  XVƒ`ƒƒƒlƒ‹iWindows €”õƒŒƒxƒ‹j: SAC-T (1809 ˆÈ‘O‚Ì‚İ)" 
+		Write-Host "  æ›´æ–°ãƒãƒ£ãƒãƒ«ï¼ˆWindows æº–å‚™ãƒ¬ãƒ™ãƒ«ï¼‰: SAC-T (1809 ä»¥å‰ã®ã¿)" 
 	} else {
-		Write-Host "  XVƒ`ƒƒƒlƒ‹iWindows €”õƒŒƒxƒ‹j: Preview Build" 
+		Write-Host "  æ›´æ–°ãƒãƒ£ãƒãƒ«ï¼ˆWindows æº–å‚™ãƒ¬ãƒ™ãƒ«ï¼‰: Preview Build" 
 	}
-	Write-Host "  ‹@”\XVƒvƒƒOƒ‰ƒ€‚ªƒŠƒŠ[ƒX‚³‚ê‚½ŒãAóM‚ğ‰„Šú‚·‚é“ú”:" $WUfBSettingFULocal
-	Write-Host "  •i¿XVƒvƒƒOƒ‰ƒ€‚ªƒŠƒŠ[ƒX‚³‚ê‚½ŒãAóM‚ğ‰„Šú‚·‚é“ú”:" $WUfBSettingQULocal
-	Write-Host "  ("$EffectiveWUfBLocal"İ’èêŠFİ’èƒAƒvƒŠ > XV‚ÆƒZƒLƒ…ƒŠƒeƒB > Windows Update > Ú×ƒIƒvƒVƒ‡ƒ“ > XVƒvƒƒOƒ‰ƒ€‚ğ‚¢‚ÂƒCƒ“ƒXƒg[ƒ‹‚·‚é‚©‚ğ‘I‘ğ‚·‚éiWSUS ƒNƒ‰ƒCƒAƒ“ƒg‚Å‚Í”ñ•\¦j)"
+	Write-Host "  æ©Ÿèƒ½æ›´æ–°ãƒ—ãƒ­ã‚°ãƒ©ãƒ ãŒãƒªãƒªãƒ¼ã‚¹ã•ã‚ŒãŸå¾Œã€å—ä¿¡ã‚’å»¶æœŸã™ã‚‹æ—¥æ•°:" $WUfBSettingFULocal
+	Write-Host "  å“è³ªæ›´æ–°ãƒ—ãƒ­ã‚°ãƒ©ãƒ ãŒãƒªãƒªãƒ¼ã‚¹ã•ã‚ŒãŸå¾Œã€å—ä¿¡ã‚’å»¶æœŸã™ã‚‹æ—¥æ•°:" $WUfBSettingQULocal
+	Write-Host "  ("$EffectiveWUfBLocal"è¨­å®šå ´æ‰€ï¼šè¨­å®šã‚¢ãƒ—ãƒª > æ›´æ–°ã¨ã‚»ã‚­ãƒ¥ãƒªãƒ†ã‚£ > Windows Update > è©³ç´°ã‚ªãƒ—ã‚·ãƒ§ãƒ³ > æ›´æ–°ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’ã„ã¤ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã™ã‚‹ã‹ã‚’é¸æŠã™ã‚‹ï¼ˆWSUS ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã§ã¯éè¡¨ç¤ºï¼‰)"
 }
 Write-Host ""
 # Check WUfB Settings Policies
-if (($WUfBSettingFU -eq "1") -or ($WUfBSettingQU -eq "1")) {
-	Write-Host "Windows Update for Business (ƒ|ƒŠƒV[): —LŒø"
-        if ($WUfBSettingBranch.Lengsh -eq 0) {
-		Write-Host "  XVƒ`ƒƒƒlƒ‹iWindows €”õƒŒƒxƒ‹j: –¢\¬"
-		Write-Host "  ‹@”\XVƒvƒƒOƒ‰ƒ€‚ªƒŠƒŠ[ƒX‚³‚ê‚½ŒãAóM‚ğ‰„Šú‚·‚é“ú”: –¢\¬"
+if (($WUfBSettingFU -eq "1") -or ($WUfBSettingQU -eq "1") -or ($WUfBSettingTargetReleaseVersion -eq "1")) {
+	Write-Host "Windows Update for Business (ãƒãƒªã‚·ãƒ¼): æœ‰åŠ¹"
+        if ($WUfBSettingBranch.Length -eq 0) {
+		Write-Host "  æ›´æ–°ãƒãƒ£ãƒãƒ«ï¼ˆWindows æº–å‚™ãƒ¬ãƒ™ãƒ«ï¼‰: æœªæ§‹æˆ"
         } else {
 		if ($WUfBSettingBranch -eq "16") {
-			Write-Host "  XVƒ`ƒƒƒlƒ‹iWindows €”õƒŒƒxƒ‹j: SAC" 
+			Write-Host "  æ›´æ–°ãƒãƒ£ãƒãƒ«ï¼ˆWindows æº–å‚™ãƒ¬ãƒ™ãƒ«ï¼‰: SAC" 
                 } elseif ($WUfBSettingBranch -eq "32") {
-			Write-Host "  XVƒ`ƒƒƒlƒ‹iWindows €”õƒŒƒxƒ‹j: SAC-T (1809 ˆÈ‘O‚Ì‚İ)" 
+			Write-Host "  æ›´æ–°ãƒãƒ£ãƒãƒ«ï¼ˆWindows æº–å‚™ãƒ¬ãƒ™ãƒ«ï¼‰: SAC-T (1809 ä»¥å‰ã®ã¿)" 
 		} else {
-			Write-Host "  XVƒ`ƒƒƒlƒ‹iWindows €”õƒŒƒxƒ‹j: Preview Build" 
+			Write-Host "  æ›´æ–°ãƒãƒ£ãƒãƒ«ï¼ˆWindows æº–å‚™ãƒ¬ãƒ™ãƒ«ï¼‰: Preview Build" 
 		}
-		Write-Host "  ‹@”\XVƒvƒƒOƒ‰ƒ€‚ªƒŠƒŠ[ƒX‚³‚ê‚½ŒãAóM‚ğ‰„Šú‚·‚é“ú”:" $WUfBSettingFUdays
+        }
+        if ($WUfBSettingFU.Length -eq 0){
+	        Write-Host "  æ©Ÿèƒ½æ›´æ–°ãƒ—ãƒ­ã‚°ãƒ©ãƒ ãŒãƒªãƒªãƒ¼ã‚¹ã•ã‚ŒãŸå¾Œã€å—ä¿¡ã‚’å»¶æœŸã™ã‚‹æ—¥æ•°: æœªæ§‹æˆ"
+        } else { 
+	        Write-Host "  æ©Ÿèƒ½æ›´æ–°ãƒ—ãƒ­ã‚°ãƒ©ãƒ ãŒãƒªãƒªãƒ¼ã‚¹ã•ã‚ŒãŸå¾Œã€å—ä¿¡ã‚’å»¶æœŸã™ã‚‹æ—¥æ•°:" $WUfBSettingFUdays
         }
 	if ($WUfBSettingQU.Length -eq 0){
-		Write-Host "  •i¿XVƒvƒƒOƒ‰ƒ€‚ªƒŠƒŠ[ƒX‚³‚ê‚½ŒãAóM‚ğ‰„Šú‚·‚é“ú”: –¢\¬"
+		Write-Host "  å“è³ªæ›´æ–°ãƒ—ãƒ­ã‚°ãƒ©ãƒ ãŒãƒªãƒªãƒ¼ã‚¹ã•ã‚ŒãŸå¾Œã€å—ä¿¡ã‚’å»¶æœŸã™ã‚‹æ—¥æ•°: æœªæ§‹æˆ"
 	} else {
-		Write-Host " •i¿XVƒvƒƒOƒ‰ƒ€‚ªƒŠƒŠ[ƒX‚³‚ê‚½ŒãAóM‚ğ‰„Šú‚·‚é“ú”:" $WUfBSettingQUdays
+		Write-Host "  å“è³ªæ›´æ–°ãƒ—ãƒ­ã‚°ãƒ©ãƒ ãŒãƒªãƒªãƒ¼ã‚¹ã•ã‚ŒãŸå¾Œã€å—ä¿¡ã‚’å»¶æœŸã™ã‚‹æ—¥æ•°:" $WUfBSettingQUdays
 	}
-	Write-Host "  ("$EffectiveWUfBPolicy"İ’èêŠFƒRƒ“ƒsƒ…[ƒ^[‚Ì\¬\ŠÇ——pƒeƒ“ƒvƒŒ[ƒg\Windows ƒRƒ“ƒ|[ƒlƒ“ƒg\Windows Update\Windows Update for Business)"
+	if ($WUfBSettingTargetReleaseVersionInfo.Length -eq 0){
+		Write-Host "  ã‚¿ãƒ¼ã‚²ãƒƒãƒˆæ©Ÿèƒ½æ›´æ–°ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ (1803 ä»¥é™): æœªæ§‹æˆ"
+	} else {
+		Write-Host "  ã‚¿ãƒ¼ã‚²ãƒƒãƒˆæ©Ÿèƒ½æ›´æ–°ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ (1803 ä»¥é™): " $WUfBSettingTargetReleaseVersionInfo
+        }
+	Write-Host "  ("$EffectiveWUfBPolicy"è¨­å®šå ´æ‰€ï¼šã‚³ãƒ³ãƒ”ãƒ¥ãƒ¼ã‚¿ãƒ¼ã®æ§‹æˆ\ç®¡ç†ç”¨ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ\Windows ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ\Windows Update\Windows Update for Business)"
 } else {
-	Write-Host "Windows Update for Business (ƒ|ƒŠƒV[): –¢\¬"
+	Write-Host "Windows Update for Business (ãƒãƒªã‚·ãƒ¼): æœªæ§‹æˆ"
 }
+
 Write-Host ""
 # Check ConfigMgr Client
 if (($ConfigMgrClient.Length -ne 0) -and (Test-Path "C:\Windows\CCMSETUP")) {
 	Write-Host "**********************************************************************************************"
-	Write-Host "* ‚±‚Ì PC ‚Í Microsoft Endpoint Configration Manager ‚É‚æ‚Á‚ÄŠÇ—‚³‚ê‚Ä‚¢‚é‰Â”\«‚ª‚ ‚è‚Ü‚·B*"
+	Write-Host "* ã“ã® PC ã¯ Microsoft Endpoint Configration Manager ã«ã‚ˆã£ã¦ç®¡ç†ã•ã‚Œã¦ã„ã‚‹å¯èƒ½æ€§ãŒã‚ã‚Šã¾ã™ã€‚*"
 	Write-Host "**********************************************************************************************"
 }
 Write-Host ""
 $WinVer = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ReleaseId
 $WinBuild = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").CurrentBuild
 $WinRev = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").UBR
-Write-Host "Œ»İ‚ÌXVó‘Ô: ƒo[ƒWƒ‡ƒ“"$WinVer", ƒrƒ‹ƒh" $WinBuild"."$WinRev
+Write-Host "ç¾åœ¨ã®æ›´æ–°çŠ¶æ…‹: ãƒãƒ¼ã‚¸ãƒ§ãƒ³"$WinVer", ãƒ“ãƒ«ãƒ‰" $WinBuild"."$WinRev
 Write-Host ""
-Write-Host "(’ˆÓ: ‚±‚ÌƒXƒNƒŠƒvƒg‚Í Microsoft Intune ‚â‚»‚Ì‘¼‚ÌXVƒc[ƒ‹‚ÅŠÇ—‚³‚ê‚é PC ‚Ì’²¸‚É‚Í‘Î‰‚µ‚Ä‚¢‚Ü‚¹‚ñB)"
+Write-Host "(æ³¨æ„: ã“ã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆã¯ Microsoft Intune ã‚„ãã®ä»–ã®æ›´æ–°ãƒ„ãƒ¼ãƒ«ã§ç®¡ç†ã•ã‚Œã‚‹ PC ã®èª¿æŸ»ã«ã¯å¯¾å¿œã—ã¦ã„ã¾ã›ã‚“ã€‚)"
 Write-Host ""
