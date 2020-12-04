@@ -200,7 +200,7 @@ Get version (build number) and update channel (new name from May 2020, Current, 
 Output<br />
 
 PS C:\Work> .\get-m365ver.ps1<br />
-Microsoft 365 Apps (C2R) Current Version:  16.0.13127.20760<br />
+Microsoft 365 Apps (C2R) Current Version:  16.0.13426.20308<br />
   Update Channel (Local Setting):   Semi-Annual Enterprise Channel (Preview)<br />
   Update Channel (Policy Setting):  Current Channel (Preview) *<br />
 PS C:\Work><br />
