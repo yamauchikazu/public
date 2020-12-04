@@ -193,17 +193,17 @@ PS C:\Work>
 Get version and update channel from local installed Microsoft 365 Apps (for 2016/2019)<br />
 <a href="https://github.com/yamauchikazu/public/blob/master/technetscriptcenter(archived)/get-m365ver.ps1">get-m365ver.ps1</a>
 ---------------------------------------
-Description
+Description<br />
 
 Get version (build number) and update channel (new name from May 2020, Current, Monthly Enterprise, Semi-Annual Enterprise ...) from local Microsoft 365 Apps (Click to Run) .
 
-Output
+Output<br />
 
 PS C:\Work> .\get-m365ver.ps1<br />
-Microsoft 365 Apps (C2R) Current Version:  16.0.13127.20760
-  Update Channel (Local Setting):   Semi-Annual Enterprise Channel (Preview)
-  Update Channel (Policy Setting):  Current Channel (Preview) *
-PS C:\Work>
+Microsoft 365 Apps (C2R) Current Version:  16.0.13127.20760<br />
+  Update Channel (Local Setting):   Semi-Annual Enterprise Channel (Preview)<br />
+  Update Channel (Policy Setting):  Current Channel (Preview) *<br />
+PS C:\Work><br />
 
 ---------------------------------------
 Show Windows Update History by PowerShell<br />
