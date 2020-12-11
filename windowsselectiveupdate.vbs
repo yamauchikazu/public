@@ -4,14 +4,14 @@ Dim objWMIService, colOperatingSystems,  ObjOperatingSystem
 
 If Right((LCase(WScript.FullName)),11) <> "cscript.exe" then
   WScript.Echo "This script should be run using CSCRIPT.EXE." & _
-    vbCRLF & "ExampleÅF cscript WindowsUpdate.vbs"
+    vbCRLF & "Example: cscript WindowsSelectiveUpdate.vbs"
   WScript.Quit(0)
 End if
 
 WScript.Echo "------------------------------"
 WScript.Echo "Windows Update"
 WScript.Echo "------------------------------"
-WScript.Echo "Checking for updates...."
+WScript.Echo "Checking for updates ..."
 Set updateSession = CreateObject("Microsoft.Update.Session")
 Set updateSearcher = updateSession.CreateupdateSearcher()
 Set searchResult = updateSearcher.Search("IsInstalled=0 and Type='Software'")
@@ -26,7 +26,7 @@ If searchResult.Updates.Count = 0 Then
     WScript.Echo "There are no updates available. Windows is up to date."
     WScript.Quit(0)
 Else
-    WScript.StdOut.Write vbCRLF & searchResult.Updates.Count & " updates have been detected. To install them all, press A , To install individual updates, enter a number (press Enter to abort).:"
+    WScript.StdOut.Write vbCRLF & searchResult.Updates.Count & " update(s) have been detected. To install them all, press A , To install individual updates, enter a number (press Enter to abort).:"
     InputKey = ucase(WScript.StdIn.Readline)
 End If
 WScript.echo ""
@@ -45,7 +45,7 @@ Else
    End if
 End If
 
-WScript.StdOut.Write "Getting ready to download...."
+WScript.StdOut.Write "Preparing for download ..."
 Set updatesToDownload = CreateObject("Microsoft.Update.UpdateColl")
 For i = 0 to searchResult.Updates.Count-1
    WScript.StdOut.Write "."
@@ -60,12 +60,12 @@ For i = 0 to searchResult.Updates.Count-1
    End if
 Next
 
-WScript.Echo vbCRLF & "Downloading the update..."
+WScript.Echo vbCRLF & "Downloading update(s) ..."
 Set downloader = updateSession.CreateUpdateDownloader()
 downloader.Updates = updatesToDownload
 downloader.Download()
 
-WScript.Echo "Download of the following updates has been completed."
+WScript.Echo "Download of the following update(s) has been completed."
 For i = 0 To searchResult.Updates.Count-1
   Set update = searchResult.Updates.Item(i)
   If update.IsDownloaded Then
@@ -74,7 +74,7 @@ For i = 0 To searchResult.Updates.Count-1
 Next
 
 Set updatesToInstall = CreateObject("Microsoft.Update.UpdateColl")
-WScript.StdOut.Write "Preparing for installation..."
+WScript.StdOut.Write "Preparing for installation ..."
 For i = 0 To searchResult.Updates.Count-1
   set update = searchResult.Updates.Item(i)
   If update.IsDownloaded = true Then
@@ -83,7 +83,7 @@ For i = 0 To searchResult.Updates.Count-1
   End If
 Next
 
-WScript.Echo vbCRLF & "Installing update(s)..."
+WScript.Echo vbCRLF & "Installing update(s) ..."
 Set installer = updateSession.CreateUpdateInstaller()
 installer.Updates = updatesToInstall
 Set installationResult = installer.Install()
@@ -100,7 +100,7 @@ For i = 0 to updatesToInstall.Count - 1
   If installationResult.GetUpdateResult(i).ResultCode = 2 then
     WScript.Echo ": Succeeded"
   Else
-    WScript.Echo "ÅFfailed"
+    WScript.Echo ": failed"
   End If
 Next
 WScript.StdOut.Write "Need to reboot: "
