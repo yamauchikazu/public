@@ -7,5 +7,8 @@ windowsupdate.vbs  : search and install all available updates.</br>
 windowsupdatej.vbs : search and install all available updates for japanese.</br>
 windowsselectiveupdate.vbs  : search and install individual Update or all available updates.</br>
 windowsselectiveupdatej.vbs : search and install individual Update or all available updates for japanese.</br>
+Reference: </br>
+Windows Update Agent API</br>
+<a href="https://docs.microsoft.com/en-us/windows/win32/wua_sdk/portal-client">https://docs.microsoft.com/en-us/windows/win32/wua_sdk/portal-client</a>
 
 
