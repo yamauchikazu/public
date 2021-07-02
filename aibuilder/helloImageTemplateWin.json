@@ -37,7 +37,7 @@
                 "type": "PowerShell",
                 "name": "CreateBuildPath",
                 "runElevated": false,
-                "scriptUri": "https://github.com/yamauchikazu/public/blob/master/aibuilder/testPsPcript.ps1"
+                "scriptUri": "https://raw.githubusercontent.com/yamauchikazu/public/master/aibuilder/testPsPcript.ps1"
             },
             {
                 "type": "WindowsRestart",
