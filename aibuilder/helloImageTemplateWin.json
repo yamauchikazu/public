@@ -1,0 +1,102 @@
+{
+    "type": "Microsoft.VirtualMachineImages/imageTemplates",
+    "apiVersion": "2020-02-14",
+    "location": "<region>",
+    "dependsOn": [],
+    "tags": {
+        "imagebuilderTemplate": "windows2019",
+        "userIdentity": "enabled"
+            },
+        "identity": {
+            "type": "UserAssigned",
+                    "userAssignedIdentities": {
+                    "<imgBuilderId>": {}
+                        
+                }
+                },
+    "properties": {
+
+        "buildTimeoutInMinutes" : 120,
+
+        "vmProfile": 
+                {
+                "vmSize": "Standard_D2_v2",
+                "osDiskSizeGB": 127
+                },
+        
+        "source": {
+            "type": "PlatformImage",
+                "publisher": "MicrosoftWindowsServer",
+                "offer": "WindowsServer",
+                "sku": "2019-Datacenter",
+                "version": "latest"
+            
+        },
+        "customize": [
+            {
+                "type": "PowerShell",
+                "name": "CreateBuildPath",
+                "runElevated": false,
+                "scriptUri": "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1"
+            },
+            {
+                "type": "WindowsRestart",
+                "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > c:\\buildArtifacts\\azureImageBuilderRestart.txt",
+                "restartTimeout": "5m"
+            },
+            {
+                "type": "File",
+                "name": "downloadBuildArtifacts",
+                "sourceUri": "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html",
+                "destination":"c:\\buildArtifacts\\index.html"
+            },
+
+            {
+                "type": "PowerShell",
+                "name": "settingUpMgmtAgtPath",
+                "runElevated": true,
+                "inline": [
+                    "mkdir c:\\buildActions",
+                    "echo Azure-Image-Builder-Was-Here  > c:\\buildActions\\buildActionsOutput.txt",
+                    "Add-WindowsPackage -Online -PackagePath c:\\buildArtifacts\\Microsoft-Windows-Server-Language-Pack_x64_ja-jp.cab",
+                    "Add-WindowsCapability -Online -Name Language.Basic~~~ja-JP~0.0.1.0",
+                    "Add-WindowsCapability -Online -Name Language.Fonts.Jpan~~~und-JPAN~0.0.1.0",
+                    "Add-WindowsCapability -Online -Name Language.Handwriting~~~ja-JP~0.0.1.0",
+                    "Add-WindowsCapability -Online -Name Language.OCR~~~ja-JP~0.0.1.0",
+                    "Add-WindowsCapability -Online -Name Language.Speech~~~ja-JP~0.0.1.0",
+                    "Add-WindowsCapability -Online -Name Language.TextToSpeech~~~ja-JP~0.0.1.0",
+                    "Set-WinUILanguageOverride ja-JP",
+                    "Set-Culture ja-JP",
+                    "$mylang = New-WinUserLanguageList ja",
+                    "Set-WinUserLanguageList $mylang",
+                    "Set-WinDefaultInputMethodOverride '0411:{03B5835F-F03C-411B-9CE2-AA23E1171E36}{A76C93D9-5523-4E90-AAFA-4DB112F9AC76}'",
+                    "Set-WinHomeLocation -GeoID 122",
+                    "Set-TimeZone -Id 'Tokyo Standard Time'",
+                    "Set-WinSystemLocale ja-JP"
+                ]
+                },
+                {
+                    "type": "WindowsUpdate",
+                    "searchCriteria": "IsInstalled=0",
+                    "filters": [
+                        "exclude:$_.Title -like '*Preview*'",
+                        "include:$true"
+                                ],
+                    "updateLimit": 20
+                }
+        ],
+        "distribute": 
+            [
+                {   "type":"ManagedImage",
+                    "imageId": "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/images/<imageName>",
+                    "location": "<region>",
+                    "runOutputName": "<runOutputName>",
+                    "artifactTags": {
+                        "source": "azVmImageBuilder",
+                        "baseosimg": "windows2019"
+                    }
+                }
+            ]
+        }
+}
+
