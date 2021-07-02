@@ -1,7 +1,7 @@
 mkdir c:\buildArtifacts
 echo Azure-Image-Builder-Was-Here  > c:\buildArtifacts\azureImageBuilder.txt
-curl https://github.com/yamauchikazu/public/blob/master/aibuilder/ja-jp.cab -o Microsoft-Windows-Server-Language-Pack_x64_ja-jp.cab
-Add-WindowsPackage -Online -PackagePath c:\\buildArtifacts\\Microsoft-Windows-Server-Language-Pack_x64_ja-jp.cab
+curl https://github.com/yamauchikazu/public/blob/master/aibuilder/ja-jp.cab -o c:\buildArtifacts\Microsoft-Windows-Server-Language-Pack_x64_ja-jp.cab
+Add-WindowsPackage -Online -PackagePath c:\buildArtifacts\Microsoft-Windows-Server-Language-Pack_x64_ja-jp.cab
 Add-WindowsCapability -Online -Name Language.Basic~~~ja-JP~0.0.1.0
 Add-WindowsCapability -Online -Name Language.Fonts.Jpan~~~und-JPAN~0.0.1.0
 Add-WindowsCapability -Online -Name Language.Handwriting~~~ja-JP~0.0.1.0
