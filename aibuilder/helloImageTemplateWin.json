@@ -37,7 +37,7 @@
                 "type": "PowerShell",
                 "name": "CreateBuildPath",
                 "runElevated": false,
-                "scriptUri": "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1"
+                "scriptUri": "https://github.com/yamauchikazu/public/blob/master/aibuilder/testPsPcript.ps1"
             },
             {
                 "type": "WindowsRestart",
