@@ -37,7 +37,7 @@
                 "type": "PowerShell",
                 "name": "CreateBuildPath",
                 "runElevated": false,
-                "scriptUri": "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1"
+                "scriptUri": "https://raw.githubusercontent.com/yamauchikazu/public/master/aibuilder/testPsScript.ps1"
             },
             {
                 "type": "WindowsRestart",
@@ -82,7 +82,7 @@
                         "exclude:$_.Title -like '*Preview*'",
                         "include:$true"
                                 ],
-                    "updateLimit": 20
+                    "updateLimit": 30
                 }
         ],
         "distribute": 
