@@ -58,6 +58,7 @@
                 "inline": [
                     "mkdir c:\\buildActions",
                     "echo Azure-Image-Builder-Was-Here  > c:\\buildActions\\buildActionsOutput.txt",
+                    "curl https://github.com/yamauchikazu/public/raw/master/aibuilder/ja-jp.cab -o c:\buildArtifacts\Microsoft-Windows-Server-Language-Pack_x64_ja-jp.cab",
                     "Add-WindowsPackage -Online -PackagePath c:\\buildArtifacts\\Microsoft-Windows-Server-Language-Pack_x64_ja-jp.cab",
                     "Add-WindowsCapability -Online -Name Language.Basic~~~ja-JP~0.0.1.0",
                     "Add-WindowsCapability -Online -Name Language.Fonts.Jpan~~~und-JPAN~0.0.1.0",
