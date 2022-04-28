@@ -2,6 +2,12 @@
 
 <a href="https://github.com/yamauchikazu/public/tree/master/technetscriptcenter(archived)">technetscriptcenter(archived)</a> - archived my sample scripts from technet script center. Microsoft plans to retire Technet Gallery (including script center) in June 2020.
 
+<b>Run Scheduled Task sample scripts </b></br>
+runtask.ps1 Run Ready or Queued state task and wait for complete from cmdline. If Disabled state task, do not anything.</br>
+Usage:   .\runtask.ps1 "taskname" "taskpath" </br>
+Example: .\runtask.ps1 "SilentCleanup" "\Microsoft\Windows\DiskCleanup\\" </br>
+
+
 <b>Windows Update Agent API sample scripts </b></br>
 windowsupdate.vbs  : search and install all available updates <b>interactively</b>.</br>
 windowsupdate.ps1  : search and install available updates <b>automatically.</b>(for PowerShell）</br>
