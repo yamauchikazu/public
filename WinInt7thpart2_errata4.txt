@@ -1,0 +1,64 @@
+-----------------------------
+訂正情報（2刷、3刷以降の変更）
+-----------------------------
+
+第1章
+
+P.3	*1　訳注：Windows 10はその後、2021年11月のWindows 10バージョン21H2（November 2021 Update）まで半期チャネル（Semi-Annual Channel、SAC）のリリースサイクルで提供され、2021年10月には本書執筆時点では予定されていなかったWindows 11が正式にリリースされました。Windows 11とWindows 10は一般提供チャネル（General Availability Channel）のもとで1年に1回のリリースとなり、Windows 10のサービスは2025年10月14日で終了することが決まっています。
+
+P.35　アプリコンテナー内で実行されるMicrosoft Edgeブラウザー」は、現在のChromiumベースの新しいMicrosoft Edgeではなく、2021年3月にサポートが終了したレガシMicrosoft Edge（EdgeHTMLベース）のことです。
+
+P.41　srv*c:\symbols*https://mdl.microsoft.com/download/symbols
+
+P.48　TechNet Forums - Windows Sysinternals（...）を活用してください。 → Sysinternals community support（https://docs.microsoft.com/en-us/answers/products/sysinternals）を活用してください。
+
+第2章
+
+P.59	Windows Storage Server Workgroup → Windows Storage Server 2016 Workgroup
+
+P.59　*5　訳注：2017年10月より、ソフトウェアアシュアランス向けにWindows Server Semi-Annual Channel（SAC）の提供が始まりましたが、2022年8月で廃止されました（バージョン1709～20H2）。Windows Server 2016は、Long Term Servicing Channel（LTSC）として提供される長期サポート製品であり、その後、2018年11月にWindows Server 2019、2021年9月にWindows Server 2022がリリースされています。
+
+P.67	「（特に、ネットワーク部分については、本書下巻で説明します）」 → 下では説明していないため削除。
+
+P.76　*10　訳注：... なお、本書で説明しているWSLのアーキテクチャは、本物のLinuxカーネルで動作するWSL2（Windows 10バージョン1903以降でサポート）のものとは異なります。
+
+P.96	仮想セキュアモード（Virtual Secure Mode） → 仮想保護モード（Virtual Secure Mode）
+
+第3章　
+
+P.199　*13　訳注：Windows Server 2016およびWindows 10バージョン1809以降のDockerサポートは、両方のモードをサポートしています。前者をHyper-Vコンテナー（またはHyper-V分離モード）、後者をWindows Serverコンテナー（またはプロセス分離モード）と呼び、Server CoreやNano ServerのベースOSイメージを使用したWindowsコンテナーの作成が可能です。64ビットWindows 10 Anniversary Update以降のDockerサポートは、前者のHyper-Vコンテナーのみをサポートします。なお、当初、Hyper-Vコンテナーの技術を応用してLinuxコンテナーを動かす「LCOW（Linux Containers on Windows）」の実装が予定されていましたが、この機能は正式にリリースされることなく開発終了となりました。本書では、プロセス分離モードを実現している、いくつかのコアテクノロジについて説明しています。
+
+第4章
+
+P.248　Windows 2012 → Windows Server 2012
+
+P.259　KzCheckForThreadDispatch → KiCheckForThreadDispatch
+
+第5章
+
+P.350　（バグチェックコードについては、本書下巻で説明します）をトルツメ。
+
+※Part 2で予定されていたCrash Dump Analysisの章は削除されました。バグチェックコードについては、6th Edition, Part 2のChapter 14 Crash Dump Analysysの章で説明されています。
+
+P.510　*24　訳注：...で説明されています。また、ユーザーサービスについては、本書下巻で詳しく説明しています。
+
+第6章
+
+P.604　Notmyfailt64.exe → Notmyfault64.exe
+
+第7章
+
+P.681　「Active Directoryについてさらに詳しくは、本書下巻で説明します」→下巻では説明していないため削除。
+
+※Part 2で予定されていたNetworkingの章は削除されました。Active Directoryについては、6th Edition, Part 1のChapter 7 Networkingで説明されています。
+
+
+P.685　（図7-2）仮想セキュアモード → 仮想保護モード
+
+P.774　*13　訳注：...電卓アプリは「インターネット接続」（SID はS-1-15-3-1）のケーパビリティを使用します（為替レートの取得に必要）。
+
+P.823　%SystemRoot%\Ehome、 →　%SystemRoot%\Ehome（Windows 7/8のMedia Center）、
+
+P.862　クラッシュダンプを解析するために利用できます（詳しくは、本書下巻で説明します）。　→　クラッシュダンプを解析するために利用できます。
+
+※Part 2で予定されていたCrash Dump Analysisの章は削除されました。クラッシュダンプの解析については、6th Edition, Part 2のChapter 14 Crash Dump Analysysの章で説明されています。

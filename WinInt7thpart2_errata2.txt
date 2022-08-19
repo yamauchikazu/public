@@ -1,0 +1,49 @@
+-----------------------------
+訂正情報（1刷以降の変更）
+-----------------------------
+
+原書 P54、訳書1刷 P59　2つ目の段落（2018/06/28）
+誤：　Windows Server 2016には、Windows Server 2016 Datacenter、Windows Server 2016 Standard、Windows Server 2016 Essentials、Windows Storage Server 2016 Standard、Windows Storage Server Workgroup、Microsoft Hyper-V Server 2016の6つの異なるエディションが存在します。
+正： Windows Server 2016には、Windows Server 2016 Datacenter、Windows Server 2016 Standard、Windows Server 2016 Essentials、Windows Server 2016 MultiPoint Premium Server、Windows Storage Server 2016、Microsoft Hyper-V Server 2016の6つの異なるエディションが存在します。
+
+訳書1刷 P126（2019/08/26）
+誤：　あるPLLが他のPLLよりも高いレベル、あるいは低いレベルで保護されます。
+↓
+正：　あるPPLが他のPPLよりも高いレベル、あるいは低いレベルで保護されます。
+
+訳書1刷 P232（2019/08/26）
+誤：　スケジューリングに関係するWindowのユーティリティとツール
+↓
+正：　スケジューリングに関係するWindowsのユーティリティとツール
+
+訳書1刷 P263、P331（2019/08/27）
+誤：　デットロック
+↓
+正：　デッドロック
+
+訳書1刷 P535（2019/08/28）
+誤：　RtlpProcessReflectionStartup関数の実行開始を支持します。
+↓
+正：　RtlpProcessReflectionStartup関数の実行開始を指示します。
+
+訳書1刷 P557（2019/08/28）
+誤：　最初のデバイスオブジェクト（DEVICE_OBJECT）のへのポインターを保持しています。
+↓
+正：　最初のデバイスオブジェクト（DEVICE_OBJECT）へのポインターを保持しています。
+
+訳書1刷 P580（2019/08/28）
+誤：　I/OマネージャーはIRPを作成するだけの ･･･ ではありません。
+↓
+正：　I/OマネージャーだけがIRPを作成する ･･･ ではありません。
+
+訳書1刷 P595（2019/09/03）
+誤：　ミューテックスについてもに本書･･･
+↓
+正：　ミューテックスについても本書･･･
+
+訳書1刷 P714（2019/08/29）
+誤：　ユニバーサルWindowsプラットフォーム（UAP）アプリ
+↓
+正：　ユニバーサルWindowsプラットフォーム（UWP）アプリ
+※補足：P.767 のメモに書いてありますが、UWPとユニバーサルアプリケーションプラットフォーム/Universal Application Platform（UAP）は同じものです。
+
