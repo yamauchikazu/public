@@ -19,4 +19,7 @@ Reference: </br>
 Windows Update Agent API</br>
 <a href="https://docs.microsoft.com/en-us/windows/win32/wua_sdk/portal-client">https://docs.microsoft.com/en-us/windows/win32/wua_sdk/portal-client</a>
 
+<b>Get versions of Windows, Edge, and Microsoft 365 Apps </b></br>
+See <a href="https://atmarkit.itmedia.co.jp/ait/articles/2108/17/news005.html">https://atmarkit.itmedia.co.jp/ait/articles/2108/17/news005.html</a>
+
 
