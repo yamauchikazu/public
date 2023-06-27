@@ -7,7 +7,7 @@ $O365CurrentVer = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Office\Click
 $O365CurrentCdn = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Office\ClickToRun\Configuration" -ErrorAction SilentlyContinue).CDNBaseUrl
 $O365CurrentPol = (Get-ItemProperty -Path "HKLM:\SOFTWARE\policies\microsoft\office\16.0\common\officeupdate" -ErrorAction SilentlyContinue).updatebranch
 if ($O365CurrentVer.Length -eq 0) {
-    Write-Host "Microsoft 365 Apps (C2R) is not installed on this PC."
+    Write-Host "Microsoft 365 Apps or  or Microsoft Office (C2R) is not installed on this PC."
 }
 else
 {

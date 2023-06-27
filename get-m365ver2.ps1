@@ -2,7 +2,7 @@ $O365CurrentVer = ""
 $O365Bitness = "" 
 $O365CurrentVer = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Office\ClickToRun\Configuration" -ErrorAction SilentlyContinue).VersionToReport
 if ($O365CurrentVer.Length -eq 0) {
-    Write-Host "Microsoft 365 Apps (C2R) is not installed on this PC."
+    Write-Host "Microsoft 365 Apps or Microsoft Office (C2R) is not installed on this PC."
     exit
 } else {
   $O365Platform = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Office\ClickToRun\Configuration").Platform
