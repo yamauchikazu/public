@@ -11,7 +11,7 @@ if ($O365CurrentVer.Length -eq 0) {
 }
 else
 {
-    Write-Host "Microsoft 365 Apps (C2R) Current Version: "$O365CurrentVer
+    Write-Host "Microsoft 365 Apps or Microsoft Office (C2R) Current Version: "$O365CurrentVer
     switch ($O365CurrentCdn) {
         "http://officecdn.microsoft.com/pr/492350f6-3a01-4f97-b9c0-c7c6ddf67d60" {$O365CurrentCdn = "Current Channel"}
         "http://officecdn.microsoft.com/pr/64256afe-f5d9-4f86-8936-8840a6a4f5be" {$O365CurrentCdn = "Current Channel (Preview)"}
