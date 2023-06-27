@@ -6,9 +6,9 @@
 .\get-m365ver.ps1   build and channel </br>
 Microsoft 365 Apps (C2R) Current Version:  16.0.16327.20324</br>
   Update Channel (Local Setting):   Semi-Annual Enterprise Channel (Preview)</br>
-  Update Channel (Policy Setting):  Monthly Enterprise Channel *</br>
+  Update Channel (Policy Setting):  Monthly Enterprise Channel *</br></br>
 .\get-m365ver2.ps1  productname, buil and bitness</br>
-Microsoft 365 Apps for enterprise - ja-jp (Build  16.0.16327.20324) 64-bit</br>
+Microsoft 365 Apps for enterprise - ja-jp (Build  16.0.16327.20324) 64-bit</br></br>
 .\get-m365ver3.ps1 </br>
 Version 2304 (Build 16327.20324) 64-bit </br>
 
