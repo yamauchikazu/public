@@ -12,6 +12,10 @@ Microsoft 365 Apps for enterprise - ja-jp (Build  16.0.16327.20324) 64-bit</br><
 .\get-m365ver3.ps1 </br>
 Version 2304 (Build 16327.20324) 64-bit </br>
 
+<b>Start Office Update </b></br>
+Check for and install Office apps updates. (for Office 2016+ and Microsoft 365 Apps) </br>
+Usage:   .\update-m365apps.ps1</br>
+
 <b>Run Scheduled Task sample scripts </b></br>
 runtask.ps1 Run Ready or Queued state task and wait for complete from cmdline. If Disabled state task, do not anything.</br>
 Usage:   .\runtask.ps1 "taskname" "taskpath" </br>
