@@ -13,7 +13,9 @@ if ($O365CurrentVer.Length -eq 0) {
 }
 $O365ProductName = ""
 $productlists = (Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | Select-Object DisplayName, DisplayVersion | ? {$_.DisplayName -ne $null })
-$productlists = $productlists + (Get-ItemProperty HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* | Select-Object DisplayName, DisplayVersion | ? {$_.DisplayName -ne $null })
+if (Test-Path HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\) {
+  $productlists = $productlists + (Get-ItemProperty HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* | Select-Object DisplayName, DisplayVersion | ? {$_.DisplayName -ne $null })
+}
 
 foreach ($product in $productlists) {
   if (($product.DisplayVersion -eq $O365CurrentVer) -and (($product.DisplayName -like "Microsoft 365 Apps *") -or ($product.DisplayName -like "Microsoft Office *"))) { 
